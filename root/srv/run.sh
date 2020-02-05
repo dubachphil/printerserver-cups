@@ -80,9 +80,6 @@ Password:  ${CUPS_PASSWORD}
 
 EOF
 
-### Start syslogd ###
-/sbin/syslogd
-
 ### Start automatic printer refresh for avahi ###
 #/srv/avahi-refresh.sh
 

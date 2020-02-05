@@ -2,5 +2,7 @@ version: '3'
 services:
   printserver:
     image: dubachphil/cups
+    environment:
+      - CUPS_ENV_HOST=localhost
     restart: always
     network_mode: "host"
