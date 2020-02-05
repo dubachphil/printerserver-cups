@@ -1,13 +1,4 @@
 FROM ubuntu:xenial
-#
-# BUILD:
-#   wget https://raw.githubusercontent.com/thbe/docker-cups/master/Dockerfile
-#   docker build --rm --no-cache -t dubachphil/cups .
-#
-# USAGE:
-#   wget https://raw.githubusercontent.com/thbe/docker-cups/master/start_cups.sh
-#   ./start_cups.sh
-#
 
 # Set metadata
 LABEL maintainer="Philipp Dubach <dubachphil@hotmail.com>"
@@ -22,7 +13,13 @@ WORKDIR /opt/cups
 
 # Install CUPS/AVAHI
 RUN apt-get update && apt-get upgrade -y
+RUN apt-get install printer-driver-gutenprint hplip -y
 RUN apt-get install cups cups-filters avahi-daemon inotify-tools -y
+
+# Install Gutenprint Printdrivers
+# RUN apt-get install curl
+# RUN curl https://netcologne.dl.sourceforge.net/project/gimp-print/gutenprint-5.3/5.3.3/gutenprint-5.3.3.tar.xz --output gutenprint.tar.xz
+# RUN tar xjvf gutenprint-5.0.0.tar.bz2
 
 # Copy configuration files
 COPY root /
